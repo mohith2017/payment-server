@@ -19,7 +19,6 @@ const { ApiError, client: square } = require('./server/square');
 
 async function createPayment(req, res) {
 
-  res.setHeader('Access-Control-Allow-Origin', 'https://master--glittery-sunshine-fd9cac.netlify.app');
   const payload = await json(req);
   logger.debug(JSON.stringify(payload));
   // We validate the payload for specific fields. You may disable this feature
