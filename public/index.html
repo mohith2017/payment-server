@@ -238,7 +238,7 @@
           idempotencyKey: window.crypto.randomUUID(),
         });
 
-        const paymentResponse = await fetch('/.netlify/functions/server/createPayment', {
+        const paymentResponse = await fetch('https://glittery-sunshine-fd9cac.netlify.app/.netlify/functions/server/createPayment', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
