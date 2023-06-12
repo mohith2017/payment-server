@@ -149,7 +149,7 @@ async function serveStatic(req, res) {
 
 // export routes to be served by micro
 module.exports = router(
-  post('/payment', createPayment),
+  post('/createPayment', createPayment),
   post('/card', storeCard),
   get('/*', serveStatic)
 );
