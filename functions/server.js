@@ -17,7 +17,7 @@ const {
 // square provides the API client and error types
 const { ApiError, client: square } = require('./server/square');
 
-async function createPayment(req, res) {
+module.exports.handler = async function createPayment(req, res) {
   const payload = await json(req);
   logger.debug(JSON.stringify(payload));
   // We validate the payload for specific fields. You may disable this feature
