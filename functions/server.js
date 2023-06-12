@@ -18,12 +18,9 @@ const {
 const { ApiError, client: square } = require('./server/square');
 
 async function createPayment(req, res) {
-
-  // res.setHeader('Access-Control-Allow-Origin', 'https://glittery-sunshine-fd9cac.netlify.app');
-  
   const payload = await json(req);
   logger.debug(JSON.stringify(payload));
-  console.log(JSON.stringify(payload))
+  console.log(JSON.stringify(payload));
   // We validate the payload for specific fields. You may disable this feature
   // if you would prefer to handle payload validation on your own.
   if (!validatePaymentPayload(payload)) {
@@ -151,9 +148,11 @@ async function serveStatic(req, res) {
   });
 }
 
-// export routes to be served by micro
-module.exports.handler = router(
-  post('/createPayment', createPayment),
-  post('/card', storeCard),
+// Create the routes
+const routes = router(
+  post('/.netlify/functions/server/createPayment', createPayment),
+  post('/.netlify/functions/server/card', storeCard),
   get('/*', serveStatic)
 );
+
+module.exports = routes;
