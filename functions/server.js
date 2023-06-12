@@ -17,7 +17,7 @@ const {
 // square provides the API client and error types
 const { ApiError, client: square } = require('./server/square');
 
-module.exports.handler = async function createPayment(req, res) {
+async function createPayment(req, res) {
   const payload = await json(req);
   logger.debug(JSON.stringify(payload));
   // We validate the payload for specific fields. You may disable this feature
@@ -148,7 +148,7 @@ async function serveStatic(req, res) {
 }
 
 // export routes to be served by micro
-module.exports = router(
+module.exports.handler = router(
   post('/createPayment', createPayment),
   post('/card', storeCard),
   get('/*', serveStatic)
