@@ -155,4 +155,4 @@ const routes = router(
   get('/*', serveStatic)
 );
 
-module.exports = routes;
+module.exports.handler = routes;
