@@ -231,6 +231,10 @@
       }
 
       async function createPayment(token, verificationToken) {
+
+        const origin = window.origin;
+        console.log(origin);
+
         const body = JSON.stringify({
           locationId,
           sourceId: token,
@@ -238,7 +242,7 @@
           idempotencyKey: window.crypto.randomUUID(),
         });
 
-        const paymentResponse = await fetch('https://glittery-sunshine-fd9cac.netlify.app/.netlify/functions/server/createPayment', {
+        const paymentResponse = await fetch(origin + '/.netlify/functions/server/createPayment', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
